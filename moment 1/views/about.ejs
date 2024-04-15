@@ -1,0 +1,28 @@
+<!DOCTYPE html> <!--här har jag inte kommenterat något eftersom jag inte har något nytt och allt är ren html-->
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Appen</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Om Appen</h1>
+    <div class="container" >
+        <p class="omText">
+            Den här webbbplatsen är gjort till kurs <i>DT207G</i>, i den här uppgiften har jag gjort en webbapplikation som består av tre sidor.
+            I startsidan, kan man se alla kurser som har lagrats, jag har använt SQLite3 för att göra databasen. Det var första gången jag anänder det, förr hade jag använt MariaDB men jag tycker att SQLite är mycket bättre eftersom allt är tydligare och enklare i den. 
+            Så jag kommer använda den i framtiden! </br> I den här sidan kan man se information om kursen ( namn, progression, länk till kursen, när den är postad) vi har också en radera-knapp här så man kan ta bort kursen när man vill. </br> Längst 
+            ner i sidan har vi två knappar man använder för att gå över till andra sidor! </br>
+            I nästa sida kan man lägga till ny kurs, man ska skriva in detaljer så som <i>kurskod, kursnamn, syllabus, progression, </i>till den nya kursen. </br>
+            I sista sidan, denna sida, kan man läsa om appen!
+        </br> Det var första gången jag gör en app med backend, i början av kursen var jag lite rädd och trodde att det ska bli jättesvårt men det var inte så och allt är så praktiskt! </br>
+        I filerna har jag kommenterat och förklarat vad jag har gjort.
+        </p>
+
+    </div>
+    <div class="pages">    
+        <button type="submit" class="Btn"><a href="/add-course" class="pageBtn" style="text-decoration: none; font-size: 0.8em;" >Lägg till nya kurser</a></button>
+        <button type="submit" class="Btn"><a href="/view-courses" class="pageBtn" style="text-decoration: none;">Visa alla kurser</a></button>
+</body>
+</html>

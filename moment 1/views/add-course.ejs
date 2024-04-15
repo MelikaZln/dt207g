@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till kurs</title>
+    <link rel="stylesheet" href="/styles.css">
+</head> 
+<body>
+    <h1>Lägg till ny kurs</h1>
+    <div class="container">
+         <!-- Visa felmeddelande om det finns -->
+    <% if (error) { %>
+        <p class="error"><%= error %></p>
+    <% } %>
+    <!--formulär för att lägga till en ny kurs -->
+    <form method="post" class="form">
+        <label for="coursecode">Kurskod</label><br>
+        <input type="text" id="coursecode" name="coursecode" style="text-align: center; " placeholder="Ange Kurskod..."><br>
+        <label for="coursename">Kursnamn</label><br>
+        <input type="text" id="coursename" name="coursename"  style="text-align: center; " placeholder="Ange Kursnamn..."><br>
+        <label for="syllabus">Syllabus</label><br>
+        <input type="text" id="syllabus" name="syllabus"  style="text-align: center; " placeholder="Ange Länk till kursen..."><br>
+        <label for="progression">Progression</label><br>
+        <input type="text" id="progression" name="progression"  style="text-align: center; " placeholder="Ange Progression..."><br>
+        <button type="submit" class="addBtn">Lägg till kurs</button>
+    </form>
+    </div>
+    <div class="pages">    
+        <button type="submit" class="Btn"><a href="/view-courses" class="pageBtn" style="text-decoration: none;" >Visa alla kurser</a></button>
+        <button type="submit" class="Btn"><a href="/about" class="pageBtn" style="text-decoration: none;">Om Appen</a></button>
+    </div>
+
+</body>
+</html>

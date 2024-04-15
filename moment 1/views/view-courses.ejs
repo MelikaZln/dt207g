@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa alla kurser</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Visa alla kurser</h1>
+    <div class="containerCourses"> 
+        <!--visa om det finns felmeddelande-->
+        <% if (error) { %>
+            <p style="color: red;"><%= error %></p>
+        <% } %>
+        <!--lista kurserna-->
+        <ul>
+            <!--loopa igenom varje rad-->
+            <% rows.forEach(row => { %> 
+                <!--varje kurs representeras som en listpunkt-->
+                <li class="infoCourse"> 
+                    <!--visa kurskod-->
+                   <div class="courseCode"><%= row.coursecode %></div> 
+                   <!--visa kursnamn-->
+                   <div class="courseName"><%= row.coursename %></div>  
+                   <!--visa progression-->
+                   <div class="progression">Progression: <%= row.progression %></div> 
+                    <!--visa kursl'nk-->
+                  <div class="syllabus"><% if (row.syllabus) { %>
+                    <a href="<%= row.syllabus %>">Länk </a><br><%= row.posted %>  
+                <% } %></div>  
+                <!-- Radera kurs -->
+                    <form method="post" action="/delete/<%= row.id %>"> 
+                        <button type="submit" class="raderaBtn">Radera</button>
+                   
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <div class="pages">    
+        <button type="submit" class="Btn"><a href="/add-course" class="pageBtn" style="text-decoration: none; font-size: 0.8em;" >Lägg till nya kurser</a></button>
+        <button type="submit" class="Btn"><a href="/about" class="pageBtn" style="text-decoration: none;">Om appen</a></button>
+    </div>
+</body>
+</html>
