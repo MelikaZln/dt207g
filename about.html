@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <title>Om projektet</title>
+    <link rel="stylesheet" href="./style.css" /> <!-- Länk till extern CSS-fil -->
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <button class="hamburger" id="hamburger-toggle"> <!-- Hamburgermeny-knapp -->
+                <div class="icon-open">
+                    <!-- Hamburgermeny öppningsikon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#DABC8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 6l16 0" />
+                        <path d="M4 12l16 0" />
+                        <path d="M4 18l16 0" />
+                    </svg>
+                </div>
+                <div class="icon-close">
+                    <!-- Hamburgermeny stängningsikon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#827053" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M18 6l-12 12" />
+                        <path d="M6 6l12 12" />
+                    </svg>
+                </div>
+            </button>
+            <ul class="navbar-items">
+                <li>
+                    <a href="./index.html">Startsidan</a> <!-- Länk till startsidan -->
+                </li>
+                <li>
+                    <a href="./add.html">Ny Arbetserfarenhet</a> <!-- Länk till sidan för att lägga till ny Arbetserfarenhet -->
+                </li>
+                <li>
+                    <a href="./about.html">Om projektet</a> <!-- Länk till sidan "Om projektet"  -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <h1>Om webbplatsen</h1>
+    <p>Denna webbplats är skapad för att hantera och visa arbetslivserfarenheter. Den använder en backend-webbtjänst för att lagra och hantera data.</p>
+    <p>Webbplatsen är en fristående frontend-applikation, skapad med HTML, CSS och JavaScript.</p>
+    <p>Backend-webbtjänsten är byggd med Node.js och Express, och använder mongod som är en Non SQL databas för att lagra data om arbetslivserfarenheter.</p>
+    <p>I ny/kurs sidan kan man lägga till en arbetslivserfarenhet genom att skriva Företagsnamn, Jobbtitel och Plats och på startsidan kan man se alla lagrade arbetslivserfarenheter</p>
+    <script src="./script.js"></script> <!-- Länk till extern JavaScript-fil -->
+    <script type="module">
+        const hamburgerToggle = document.getElementById("hamburger-toggle");
+        const navbar = document.getElementById("navbar");
+
+        function onHamburgerClick() {
+            if(navbar.classList.contains("open")) {
+                navbar.classList.remove("open"); // Om menyn är öppen, ta bort klassen 'open'
+            } else {
+                navbar.classList.add("open"); // Om menyn inte är öppen, lägg till klassen 'open'
+            }
+        };
+
+        hamburgerToggle.addEventListener("click", onHamburgerClick); // Lägg till klickhändelse för hamburgarmenyn
+    </script>
+</body>
+</html>
