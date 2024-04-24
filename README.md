@@ -1,21 +1,21 @@
-Frontend Projekt: Arbetslivserfarenheter Hanteringswebbplats
-Detta projekt innehåller koden för en frontend-webbapplikation som är utformad för att hantera och visa arbetslivserfarenheter. Webbplatsen är en fristående frontend-applikation som är skapad med HTML, CSS och JavaScript.
+Backend Projekt: Backend Webbtjänst för Arbetslivserfarenheter
+Detta projekt innehåller koden för en backend-webbtjänst som är utformad för att hantera data om arbetslivserfarenheter. Backend-webbtjänsten är byggd med Node.js och Express och använder MongoDB som databas för att lagra data om arbetslivserfarenheter.
 
 Funktioner
-Lägga till arbetslivserfarenhet: På sidan "Ny kurs" kan användaren lägga till en ny arbetslivserfarenhet genom att fylla i företagsnamn, jobbtitel och plats i ett formulär.
-Visa arbetslivserfarenheter: På startsidan visas alla lagrade arbetslivserfarenheter i en lista. Varje arbetslivserfarenhet åtföljs av en knapp för att ta bort den.
-Responsiv design: Webbplatsen är utformad med en responsiv design för att anpassa sig till olika skärmstorlekar och enheter.
+API-endpoints: Erbjuder endpoints för att hantera CRUD-operationer (Create, Read, Update, Delete) på arbetslivserfarenheter.
+Enkel frontend-backend-kommunikation: Kommunicerar med frontend-webbapplikationen genom HTTP-requests för att utföra operationer på arbetslivserfarenheter.
+Enkel JSON-baserad databas: Använder MongoDB som en enkel och skalbar NoSQL-databas för att lagra data om arbetslivserfarenheter.
 Installation och användning
 Klona detta repository till din lokala maskin.
-Öppna index.html-filen i din webbläsare för att använda webbapplikationen.
+Installera alla nödvändiga npm-paket genom att köra kommandot npm install.
+Starta servern genom att köra kommandot node server.js.
 Teknologier
-HTML: Strukturerar innehållet på webbplatsen.
-CSS: Stylar och designar webbplatsens utseende.
-JavaScript: Hanterar interaktivitet och dynamiskt innehåll på webbplatsen.
-Länkar
-Startsidan: Visar alla lagrade arbetslivserfarenheter.
-Ny kurs: Lägger till en ny arbetslivserfarenhet.
-Om projektet: Ger information om projektet och dess tekniker.
-
-Här är länken till min Demo-video till webbplatsen:
-https://youtu.be/Jktn3oY0B6A
+Node.js: Körning av JavaScript-kod på serversidan.
+Express: Ramverk för att bygga webbapplikationer och API:er med Node.js.
+MongoDB: NoSQL-databas för att lagra data om arbetslivserfarenheter.
+API-endpoints
+GET /workexperience: Hämtar alla arbetslivserfarenheter från databasen.
+POST /workexperience: Lägger till en ny arbetslivserfarenhet i databasen.
+PUT /workexperience/:id: Uppdaterar en befintlig arbetslivserfarenhet med angivet ID.
+DELETE /workexperience/:id: Raderar en arbetslivserfarenhet med angivet ID från databasen.
+För mer detaljerad dokumentation om API:ets användning, se kodkommentarer och instruktioner i server.js-filen.
