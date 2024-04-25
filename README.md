@@ -1,21 +1,28 @@
-Frontend Projekt: Arbetslivserfarenheter Hanteringswebbplats
-Detta projekt innehåller koden för en frontend-webbapplikation som är utformad för att hantera och visa arbetslivserfarenheter. Webbplatsen är en fristående frontend-applikation som är skapad med HTML, CSS och JavaScript.
+## Moment 2- del 2
+Den här delen är fortsättningen till förra delen. I denna del ska jag skapa en webbapplikation som konsumerar webbtjänsten. Denna del ska vara fristående från webbtjänsten alltså den ska inte vara baserad på Express/Ejs. Webbappen ska läsa ut befintliga poster (arbetserfarenheter) och det ska vara möjligt att lägga till nya arbetserfarenheter via ett formulär. Webbapplikationen använder Fetch API för att göra GET-, POST- och DELETE-förfrågningarna. Webbapplikationen är gjort med HTML, CSS och JavaScript. 
 
-Funktioner
-Lägga till arbetslivserfarenhet: På sidan "Ny kurs" kan användaren lägga till en ny arbetslivserfarenhet genom att fylla i företagsnamn, jobbtitel och plats i ett formulär.
-Visa arbetslivserfarenheter: På startsidan visas alla lagrade arbetslivserfarenheter i en lista. Varje arbetslivserfarenhet åtföljs av en knapp för att ta bort den.
-Responsiv design: Webbplatsen är utformad med en responsiv design för att anpassa sig till olika skärmstorlekar och enheter.
-Installation och användning
-Klona detta repository till din lokala maskin.
-Öppna index.html-filen i din webbläsare för att använda webbapplikationen.
-Teknologier
-HTML: Strukturerar innehållet på webbplatsen.
-CSS: Stylar och designar webbplatsens utseende.
-JavaScript: Hanterar interaktivitet och dynamiskt innehåll på webbplatsen.
-Länkar
-Startsidan: Visar alla lagrade arbetslivserfarenheter.
-Ny kurs: Lägger till en ny arbetslivserfarenhet.
-Om projektet: Ger information om projektet och dess tekniker.
+Webbappen har tre olika undersidor: 
+1- startsidan: i den kan man se alla befintliga arbetslivserfarenheter.
+2- lägga till nya kurser: I denna sida har vi en formulär som man kan lägga till nya poerfarenheter  genom det.   
+3- om sida: i denna sida kan vi läsa vad hela uppgiften handlar om.
 
-Här är länken till min Demo-video till webbplatsen:
-https://youtu.be/Jktn3oY0B6A
+Här nere ska jag beskriva JavaScript-koden:
+I början har jag const apiUrl = 'http://localhost:3101/api/workexperience'; det är url:en till backend-webbtjänsten där erfarenheterna lagras.
+
+function deleteWorkExperience(workId) {...} här har jag en function som tar emot en arbetserfarenhet-ID som parameter, och använder fetch() för att skicka DELETE-begäran till backenden med det angivna arbets-ID:et. och till slut uppdateras listen med erfarenheterna eftersom en erfarenhet är borta. 
+
+function createDeleteButton(workId) {...} den här funktionen skapar en tabort-knapp, när man klickar på denna knapp som anropas deleteWorkExperience() alltså funktionen som tar bort erfarenheten.
+
+function getWorkExperience() {...} med denna funktion kan man hämta arbetserfarenheterna genom fetch(), och med den hämtade erfarenheten uppdateras listan på startsidan. För att skapa html-element till varje erfarenhet och lägga den till listan  använde jag forEach-loop.
+
+function loadData() {...} denna funktion anropas när sidan laddas för att initiera hämtningen av arbetslivserfarenheter.
+
+function addWorkExperience(event) {...} denna funktion anropas när man lägger till en ny erfarenhet i add.html sidan, 
+det fångar data från formulären och skapar ett JSON-objekt av den.
+Den här funktionen använder sig av fetch() för att skucka en POST-begäran till backenden med den nya erfarenheten. Till slut återställs formuläret efter att erfarenheten har lagts till. 
+
+if (document.getElementById('add-workexperience-form')) {
+    document.getElementById('add-workexperience-form').addEventListener('submit', addWorkExperience); 
+} den här delen kontrollerar om formuläret med add-workexperience-formID finns i htmlen, om det finns så kallas addWorkExperience(), när formuläret skickas in. Så man kan säga att denna kod säker ställer att lyssnaren för submit-evenemanget endast läggs till om ett formulär med add-workexperience-formID finns i html. det förhindrar att en händelselyssnare läggs till på ett formulär som inte fnns vilket skulle resultera i del JavaScript-koden. 
+
+

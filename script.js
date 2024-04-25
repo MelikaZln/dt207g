@@ -1,5 +1,5 @@
-// URL till din backend-webbtjänst
-const apiUrl = 'http://localhost:3002/workexperience';
+// URL till backend-webbtjänsten
+const apiUrl = 'http://localhost:3101/api/workexperience';
 
 // Funktion för att ta bort arbetslivserfarenhet
 function deleteWorkExperience(workId) {
@@ -15,6 +15,15 @@ function deleteWorkExperience(workId) {
     .catch(error => console.error('Error deleting workexperience:', error));
 }
 
+// Funktion för att skapa en knapp för varje arbetslivserfarenhet
+function createDeleteButton(workId) {
+    const button = document.createElement('button');
+    button.textContent = 'Ta bort';
+    button.addEventListener('click', () => {
+        deleteWorkExperience(workId);
+    });
+    return button;
+}
 // Funktion för att hämta arbetslivserfarenheter och visa dem på startsidan
 function getWorkExperience() {
     console.log("Fetching work experience...");
@@ -29,7 +38,7 @@ function getWorkExperience() {
             const listItemHTML = `
                 <li>
                     Företagsnamn: ${work.companyname}, Jobbtitel: ${work.jobtitle}, Plats: ${work.location}
-                    <button onclick="deleteWorkExperience('${work._id}')">Ta bort</button>
+                    <button onclick="deleteWorkExperience(${work.id})">Ta bort</button>
                 </li>
             `;
             workexperienceList.insertAdjacentHTML('beforeend', listItemHTML);
@@ -38,10 +47,12 @@ function getWorkExperience() {
     .catch(error => console.error('Error:', error));
 }
 
+
 // Funktion för att ladda arbetslivserfarenheter när sidan laddas
 function loadData() {
     getWorkExperience();
 }
+
 
 // Funktion för att lägga till ny arbetslivserfarenhet från add.html
 function addWorkExperience(event) {
@@ -64,8 +75,6 @@ function addWorkExperience(event) {
     .then(data => {
         console.log('Workexperience added:', data);
         form.reset();
-        // Uppdatera listan med arbetslivserfarenheter efter tillägg
-        getWorkExperience();
     })
     .catch(error => console.error('Error:', error));
 }
@@ -74,6 +83,4 @@ function addWorkExperience(event) {
 if (document.getElementById('add-workexperience-form')) {
     document.getElementById('add-workexperience-form').addEventListener('submit', addWorkExperience);
 }
-
-// Ladda arbetslivserfarenheter när sidan laddas
-loadData();
+ 

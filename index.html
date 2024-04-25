@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv"> 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arbetslivserfarenheter</title>
-    <link rel="stylesheet" href="./style.css"> <!-- Länk till extern CSS-fil -->
+    <link rel="stylesheet" href="./style.css" />
 </head>
-<body onload="loadData()"> <!-- 'loadData()' körs när sidan laddas -->
-
+<body onload="loadData()" >
     <header>
         <nav class="navbar" id="navbar">
-            <button class="hamburger" id="hamburger-toggle"> <!-- Hamburgermeny-knapp -->
+            <button class="hamburger" id="hamburger-toggle"> 
                 <div class="icon-open">
-                    <!-- Hamburgermeny öppningsikon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#DABC8B" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#755d40" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M4 6l16 0" />
                         <path d="M4 12l16 0" />
@@ -21,7 +19,6 @@
                     </svg>
                 </div>
                 <div class="icon-close">
-                    <!-- Hamburgermeny stängningsikon -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#827053" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M18 6l-12 12" />
@@ -31,38 +28,36 @@
             </button>
             <ul class="navbar-items">
                 <li>
-                    <a href="./index.html">Startsidan</a> <!-- Länk till startsidan -->
+                    <a href="./index.html">Startsidan</a>
                 </li>
                 <li>
-                    <a href="./add.html">Ny Arbetserfarenhet</a> <!-- Länk till sidan för att lägga till ny Arbetserfarenhet -->
+                    <a href="./add.html">Ny arbetserfarenhet</a>
                 </li>
                 <li>
-                    <a href="./about.html">Om projektet</a> <!-- Länk till sidan "Om projektet" -->
+                    <a href="./about.html">Om projektet</a>
                 </li>
             </ul>
         </nav>
     </header>
-
+    
     <h1>Arbetslivserfarenheter</h1>
+  
+    <ul id="workexperience-list"></ul>
     
-    <div id="workexperience-list" class="workexperience-list">
-        <!-- Arbetslivserfarenheter kommer att läggas till här -->
-    </div>
-    
-    <script src="./script.js"></script> <!-- Länk till extern JavaScript-fil -->
+    <script src="./script.js"></script>
     <script type="module">
         const hamburgerToggle = document.getElementById("hamburger-toggle");
         const navbar = document.getElementById("navbar");
 
         function onHamburgerClick() {
             if(navbar.classList.contains("open")) {
-                navbar.classList.remove("open"); // Om menyn är öppen, ta bort klassen 'open'
+                navbar.classList.remove("open");
             } else {
-                navbar.classList.add("open"); // Om menyn inte är öppen, lägg till klassen 'open'
+                navbar.classList.add("open");
             }
         };
 
-        hamburgerToggle.addEventListener("click", onHamburgerClick); // Lägg till klickhändelse för hamburgarmenyn
+        hamburgerToggle.addEventListener("click", onHamburgerClick);
     </script>
 </body>
 </html>
