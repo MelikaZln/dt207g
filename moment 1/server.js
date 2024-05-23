@@ -7,7 +7,7 @@ const path = require("path");
 // Skapa en instans av Express
 const app = express();
 // Ange  port 
-const port = 3020;
+const port = 3050;
 
 // middleware för att tolka formulärdata
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -40,26 +40,29 @@ app.get("/add-course", (req, res) => {
     // Rendera sidan för att lägga till en ny kurs - felmeddelande och framgångsindikator
     res.render("add-course", { error: "", success: false });
 });
-
-// Lägg till en ny kurs
+// funktion för att lägga till kurs
 app.post("/add-course", (req, res) => {
-    // extrahera kursinformation från formulären
     const { coursecode, coursename, syllabus, progression } = req.body;
 
-    //lägg till kursen i databasen
+    // Validera om något av fälten är tomma
+    if (!coursecode || !coursename || !syllabus || !progression) {
+        const error = "Alla fält måste fyllas i.";
+        return res.status(400).json({ error: error });
+    }
+
+    // Lägg till kursen i databasen
     db.run("INSERT INTO courses (coursecode, coursename, syllabus, progression, posted) VALUES (?, ?, ?, ?, datetime('now', 'localtime'))",
         [coursecode, coursename, syllabus, progression], err => {
             if (err) {
-                // om kursen läggs till databasen på fel sätt, logga felet och rendera sidan för att lägga till en ny kurs med felmeddelande
                 console.error("Error inserting course", err);
                 const error = "Ett fel inträffade när kursen skulle läggas till i databasen.";
-                res.render("add-course", { error: error, success: false });
-                return;
+                return res.status(500).json({ error: error });
             }
-            // Om kursen läggs till framgångsrikt, rendera sidan för att lägga till en ny kurs utan felmeddelande och med framgångsindikator
-            res.render("add-course", { error: "", success: true });
+            res.status(200).json({ success: "Kursen lades till framgångsrikt." });
         });
 });
+
+
 
 // Sida för att visa alla kurser och ta bort dem
 app.get("/view-courses", (req, res) => {
