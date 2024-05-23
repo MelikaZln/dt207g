@@ -10,11 +10,10 @@
     <h1>Lägg till ny kurs</h1>
     <div class="container">
          <!-- Visa felmeddelande om det finns -->
-    <% if (error) { %>
-        <p class="error"><%= error %></p>
-    <% } %>
+         <div id="error-message" class="error-message"></div>
     <!--formulär för att lägga till en ny kurs -->
     <form method="post" class="form">
+        
         <label for="coursecode">Kurskod</label><br>
         <input type="text" id="coursecode" name="coursecode" style="text-align: center; " placeholder="Ange Kurskod..."><br>
         <label for="coursename">Kursnamn</label><br>
@@ -30,6 +29,22 @@
         <button type="submit" class="Btn"><a href="/view-courses" class="pageBtn" style="text-decoration: none;" >Visa alla kurser</a></button>
         <button type="submit" class="Btn"><a href="/about" class="pageBtn" style="text-decoration: none;">Om Appen</a></button>
     </div>
+<script>    // Kod för att skicka formulärdata med fetch API
+    document.querySelector('form').addEventListener('submit', async (event) => {
+        event.preventDefault();
 
+        const formData = new FormData(event.target);
+        const responseData = await fetch('/add-course', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json());
+
+        if (responseData.error) {
+            document.getElementById('error-message').innerText = responseData.error;
+        } else if (responseData.success) {
+            // Om kursen läggs till framgångsrikt, gör något, t.ex. omdirigera användaren till en annan sida
+            window.location.href = '/view-courses';
+        }
+    });</script>
 </body>
 </html>
